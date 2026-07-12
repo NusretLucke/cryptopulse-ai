@@ -14,7 +14,9 @@ import type {
   OHLCVPoint,
 } from '../types/api'
 
-const BASE_URL = 'http://localhost:8000/api'
+const BASE_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:8000/api'
+  : 'https://cryptopulse-ai.onrender.com/api'
 
 async function fetchAPI<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE_URL}${endpoint}`, {

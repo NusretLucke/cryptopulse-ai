@@ -22,7 +22,7 @@ services:
       - key: ENCRYPTION_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        value: https://cryptopulse-ai.vercel.app,http://localhost:5173
+        value: https://nusretlucke.github.io,https://nusretlucke.github.io/cryptopulse-ai,http://localhost:5173
       - key: DEBUG
         value: false
 
