@@ -1,0 +1,35 @@
+# Render Deployment Config — CryptoPulse AI
+# https://render.com/docs/infrastructure-as-code
+
+services:
+  # Backend API
+  - type: web
+    name: cryptopulse-api
+    runtime: python
+    region: frankfurt
+    plan: free
+    branch: main
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cryptopulse-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://cryptopulse-ai.vercel.app,http://localhost:5173
+      - key: DEBUG
+        value: false
+
+  # Database
+  - type: postgresql
+    name: cryptopulse-db
+    region: frankfurt
+    plan: free
+    databaseName: cryptopulse
+    ipAllowList: [] # nur interne Render-Dienste
