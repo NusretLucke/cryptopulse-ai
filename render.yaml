@@ -5,7 +5,7 @@ services:
   # Backend API
   - type: web
     name: cryptopulse-api
-    runtime: python3.11
+    runtime: python
     region: frankfurt
     plan: free
     branch: main
