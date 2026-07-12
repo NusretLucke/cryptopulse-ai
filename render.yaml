@@ -10,7 +10,7 @@ services:
     plan: free
     branch: main
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
@@ -22,7 +22,7 @@ services:
       - key: ENCRYPTION_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        value: https://nusretlucke.github.io,https://nusretlucke.github.io/cryptopulse-ai,https://*.trycloudflare.com,http://localhost:5173
+        value: https://nusretlucke.github.io,https://nusretlucke.github.io/cryptopulse-ai,https://cryptopulse-ai-seven.vercel.app,http://localhost:5173
       - key: DEBUG
         value: false
 

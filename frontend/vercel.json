@@ -1,8 +1,9 @@
 {
+  "name": "cryptopulse-ai",
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://cryptopulse-api.onrender.com/api/$1"
+      "destination": "https://cryptopulse-api-tmrj.onrender.com/api/$1"
     }
   ]
 }
