@@ -65,12 +65,11 @@ app.include_router(risk.router, prefix="/api/risk", tags=["Risk Management"])
 app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
 app.include_router(watcher.router, prefix="/api/watcher", tags=["Watcher"])
 
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}
+
 # Frontend Static Files
 frontend_dist = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "frontend", "dist")
 if os.path.isdir(frontend_dist):
     app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
-
-
-@app.get("/health")
-async def health():
-    return {"status": "healthy"}
