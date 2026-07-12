@@ -124,7 +124,7 @@ export default function MarketDetail({
                   tech.trend === 'bullish' ? 'text-emerald-400' :
                   tech.trend === 'bearish' ? 'text-red-400' : 'text-gray-200'
                 }`}>{tech.trend}</div>
-                <div className="text-xs text-gray-500 capitalize">Stärke: {tech.trend_strength || tech.volume_analysis}</div>
+                <div className="text-xs text-gray-500 capitalize">Stärke: {(tech as any).trend_strength || tech.volume_analysis || 'mittel'}</div>
               </div>
             </div>
 

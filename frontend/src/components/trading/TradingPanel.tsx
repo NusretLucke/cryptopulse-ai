@@ -179,7 +179,7 @@ export default function TradingPanel({
               </tr>
             </thead>
             <tbody>
-              {portfolio?.holdings?.length > 0 ? (
+              {portfolio && portfolio.holdings && portfolio.holdings.length > 0 ? (
                 portfolio.holdings.map((h: any, i: number) => (
                   <tr key={i} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                     <td className="py-3 px-3 font-medium text-sm">{h.symbol}</td>
